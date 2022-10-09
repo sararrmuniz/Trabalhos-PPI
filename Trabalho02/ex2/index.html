@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+   <title>Cadastros</title>
+</head>
+
+<body>
+    <header><h1>Cadastro do Cliente:</h1></header>
+
+    <main>
+
+        <form action = "cadastraCliente.php" method = "post">
+
+<!--Dados Pessoais-->
+
+        <fieldset>
+            <legend>Dados Pessoais</legend>
+
+            <div>
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" minlength="2" maxlength="50" autofocus required>
+            </div>
+        
+            <br>
+        
+            <div>
+                 <label for="email">Email:</label>
+                 <input type="email" id="email" name="email" required>
+            </div>
+        
+            <br>
+
+            <div>
+                 <label for="cpf">CPF:</label>
+                 <input type="text" id="cpf" name="cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" required>
+            </div>
+
+            <br>
+
+            <div>
+                <label for="idade">Idade:</label>
+                <input type="number" id="idade" name="idade" min="14" max="100" required>
+            </div>
+
+             <br>
+
+             <div>
+                <label for="telefone">Telefone:</label>
+                <input type="tel" id="telefone" name="telefone" required>
+            </div>
+
+            <br>
+
+            <div>
+                <label for="datanasc">Data de Nascimento:</label>
+                <input type="date" id="datanasc" name="datanasc">
+            </div>
+
+            <br>
+
+            <div>
+                <label for="sexo">Sexo:</label>
+                <select name="sexo" id = "sexo">
+                    <option value="feminino">feminino</option>
+                    <option value="masculino">maculino</option>
+                </select>
+            </div>
+
+            <br>
+
+            <div>
+                <label for="tipo">Tipo de Cadastro:</label>
+                <input type="text" id="tipo" name="tipo" value="Cliente" readonly>
+            </div>
+
+            <br>
+
+        <fieldset>
+            <legend>Escolha o Estado Civil:</legend>
+                <div>
+                    <input type="radio" id="solteiro" name="estadocivil" value="solteiro">
+                    <label for="solteiro">Solteiro(a)</label>
+                </div>
+                <div>
+                    <input type="radio" id="casado" name="estadocivil" value="casado">
+                    <label for="casado">Casado(a)</label>
+                </div>
+                <div>
+                    <input type="radio" id="divorciado" name="estadocivil" value="divorciado">
+                    <label for="divorciado">Divorciado(a)</label>
+                </div>
+                <div>
+                    <input type="radio" id="viuvo" name="estadocivil" value="viuvo">
+                    <label for="viuvo">Viúvo(a)</label>
+                </div>
+            </fieldset>
+
+        </fieldset>
+
+<!--Endereço de Entrega-->
+
+        <fieldset>
+            <legend>Endereço de Entrega</legend>
+
+            <div>
+                <label for="cep">CEP:</label>
+                <input type="text" id="cep" name="cep" pattern="\d{5}-\d{3}" required>
+            </div>
+        
+            <br>
+
+            <fieldset>
+                <legend>Tipo de Logradouro:</legend>
+                <div>
+                    <input type="checkbox" id="rua" name="logradouro[]" value="rua" checked>
+                    <label for="rua">Rua</label>
+                </div>
+
+                <div>
+                    <input type="checkbox" id="avenida" name="logradouro[]" value="avenida">
+                    <label for="avenida">Avenida</label>
+                </div>
+    
+                <div>
+                    <input type="checkbox" id="praca" name="logradouro[]" value="praca">
+                    <label for="praca">Praça</label>
+                </div>
+            </fieldset>
+
+            <br>
+        
+            <div>
+                 <label for="lograd">Logradouro:</label>
+                 <input type="text" id="lograd" name="lograd" required>
+            </div>
+
+            <br>
+        
+            <div>
+                 <label for="bairro">Bairro:</label>
+                 <input type="text" id="bairro" name="bairro" required>
+            </div>
+
+            <br>
+        
+            <div>
+                 <label for="cidade">Cidade:</label>
+                 <input type="text" id="cidade" name="cidade" required>
+            </div>
+
+            <br>
+
+            <div>
+                <label for="estado">Estado:</label>
+                <select name="estado" id = "estado" required>
+                    <option value="">Minas Gerais</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="PR">Paraná</option>
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="DF">Destrito Federal</option>
+                    <option value="ES">Espírito Santo</option>
+                    <option value="GO">Goias</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
+
+                </select>
+           </div>
+        </fieldset>
+
+<!--Informações dicionais-->
+            <fieldset>
+                <legend>Informações Adicionais</legend>
+                    <div>
+                        <p>Interesses:</p>
+                        <div>
+                            <input type="checkbox" id="games" name="interesses[]" value="games">
+                            <label for="games">Games</label>
+                        </div>
+        
+                        <div>
+                            <input type="checkbox" id="filmes" name="interesses[]" value="filmes">
+                            <label for="filmes">Filmes</label>
+                        </div>
+            
+                        <div>
+                            <input type="checkbox" id="informatica" name="interesses[]" value="informatica">
+                            <label for="informatica">Informática</label>
+                        </div>
+
+                        <div>
+                            <input type="checkbox" id="livros" name="interesses[]" value="livros">
+                            <label for="livros">Livros</label>
+                        </div>
+
+                        <div>
+                            <input type="checkbox" id="roupas" name="interesses[]" value="roupas">
+                            <label for="roupas">Roupas</label>
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <div>
+                        <textarea name="texto" rows="10" cols="100">Deixe sua mensagem aqui...</textarea>
+                    </div>
+
+                    <br>
+
+                    <div>
+                        <p>Caso necessário anexar um arquivo...</p>
+                        <input type="file" accept=".png, .jpg, .jpeg">>
+                    </div>
+            </fieldset>
+
+            <br>
+                <input type="submit" value="Enviar">
+                <input type="reset" value="Limpar">
+
+        </form>
+
+    </main>
+
+</body>
