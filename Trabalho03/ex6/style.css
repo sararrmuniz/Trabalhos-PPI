@@ -1,0 +1,47 @@
+input:invalid + span::after{
+    content:'✖';
+    color: red;
+}
+
+input:valid + span::after{
+    content: '✓';
+    color: limegreen;
+}
+
+main{
+    width: 60%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+body{
+    background-color: #fff;
+    width: 100%;
+    margin: 0 auto;
+    color: #555;
+}
+header{
+    text-align: center;
+    color: #fff;
+    background-color: #555;
+    margin: 5px;
+    position: sticky;
+    top: 0;
+}
+
+input{
+    margin: 10px 0 0px;
+    border: 0.5px solid #888;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+input:focus{
+    border: 0.5px solid #888;
+    box-shadow: 0 0 10px #888;
+    outline: none;
+}
+
+.classe1{
+    width: 20%;
+}
