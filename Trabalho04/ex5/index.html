@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Exemplo JavaScript Tabs</title>
+
+        <style>
+
+            header {
+                background-color: black;
+                color: white;
+                text-align: center;
+                width: 100%;
+                padding: 2px;
+            }
+
+            nav {
+                margin: 0px auto 10px;
+                border: 1px solid black;
+                background-color: white;
+                width: 100%;
+            }
+
+            nav ul {
+                padding: 0px;
+                margin: auto;
+                text-align: center;
+            }
+
+            nav ul li {
+                display: inline;
+                width: 100px;
+            }
+
+            h2 {
+                text-align: center;
+                color: mediumblue;
+            }
+
+            body {
+                background-color: #ddd;
+                font-family: Heather;
+                line-height: 1.5;
+                text-align: left;
+                padding: 0px;
+            }
+
+            main {
+                background-color:white;
+                margin: auto;
+                border-color: lightgray;
+                border-top: 1px;
+                border-left: 1px;
+                border-right: 1px;
+                border-bottom: 1px;
+                border-style: solid;
+                width: 40%;
+                padding: 20px;
+            }
+
+            nav button {
+                border: none;
+                outline: none;
+                padding: 0 10px;
+                background-color: inherit;
+                height: 30px;
+                margin: 0;
+            }
+
+            nav button:hover {
+                color: blue;
+                cursor: pointer;
+                text-decoration: underline;
+            }
+
+            button.buttonActive {
+                font-weight: bold;
+                color: blue;
+            }
+
+            .tabs section {
+                display: none;
+            }
+
+            section.tabActive {
+                display: block;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <section>
+                <h1>Faculdade de Computação</h1>
+            </section>
+        </header>
+
+        <nav>
+            <section>
+                <ul>
+                    <li><button>Ciência da Computação</button></li>
+                    <li><button>Sistemas de Informação</button></li>
+                    <li><button>Mestrado</button></li>
+                    <li><button>Doutorado</button></li>
+                </ul>
+            </section>
+        </nav>
+
+        <main>
+            <div class="tabs">
+                <section>
+                    <h2>Bacharelado em Ciência da Computação</h2>
+                    <p>O Curso de Bacharelado em Ciências da Computação é o marco inicial da Faculdade de Computação.
+                        Foi criado em 1988 e teve seu reconhecimento em 11 de fevereiro de 1993 por meio da Portaria 
+                        181/93 do MEC. O objetivo do Curso é formar profissionais da área de Informática com competência
+                        no desenvolvimentro de software, atendendo adequadamente as exigências de mercado trabalho, além
+                        de capacitar o egresso a concluir com sucesso programas de pós-graduação.</p>
+                    <p>
+                        Os egressos do curso têm obtido grande êxito na realização profissional, destacado, um considerável 
+                        número de empresas pertencentes à ex-alunos do curso; um grande número de alunos que ingressam em 
+                        consolidados cursos de pós-graduação no país e exterior; atuação significativa de nosso ex-alunos
+                        em atividades de ensino de nível superior; e outros tantos que atuam em grandes empresas nacionais 
+                        e multinacionais.
+                    </p>
+                </section>
+                
+                <section>
+                    <h2>Bacharelado em Sistemas de Informação</h2>
+                    <p>O Curso de Bacharelado em Sistemas de Informação foi criado no ano de 2009 e teve o seu reconhecimento 
+                        em 31 de Maio de 2013 por meio da Portaria 248/13 do Ministério da Educação.
+                    </p>
+                    <p>O Objetivo do Curso é preparar profissionais com sólida e ampla formação técnica na área de tecnologia
+                        da informção aplicada às organizações; Desenvolver discentes empreendedores, capazes de projetar, implementar 
+                        e gerenciar a infraestrutura de tecnologia da informação envolvendo computadores, comunicação e dados em sistemas 
+                        organizacionais; Consolidar um profissional cidadão, com competências-conhecimentos, habilidades e atitudes- e com 
+                        responsabilidade social, capaz de respeitar as diferenças individuais, saber produzir e usar a tecnologia em benefício 
+                        da sociedade e com visão sistêmica de negócios.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>Mestrado em Ciência da Computação</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna 
+                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur 
+                        sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna 
+                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur 
+                        sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna 
+                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur 
+                        sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>Doutorado em Ciência da Computação</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna 
+                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur 
+                        sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna 
+                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur 
+                        sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna 
+                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur 
+                        sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                    </section>
+            </div>
+        </main>
+
+        <script>
+          
+            window.onload = function () {
+                buttons = document.querySelectorAll("nav button"); //seleciona todos os botões que aparecem dentro da barra de navegação
+                for(let button of buttons) {
+                    button.addEventListener("click", changeTab); //associa a chamada da função changeTab ao dar um click em cado um dos botões
+                }
+                openTab(0);
+            }
+
+            function changeTab(e) { //encontra a posição do item de lista dentro da lista
+                const botaoAcionado = e.target; //parametro 'e' contem as informações e detalhes do evento, por meio dele conseguimos saber qual foi o objeto que acionou o evento
+                const liDoBotao = botaoAcionado.parentNode; //acessa o nó referente ao li
+                const nodes = Array.from(liDoBotao.parentNode.children); //acessa todos os nós filhos do nó pai, ou seja, todos os filhos do ul
+                const index = nodes.indexOf(liDoBotao);//indica a posição do li dentro da lista
+                openTab(index);//chama função openTab passando index como parametro
+            }
+
+            function openTab(i) { //torna visível o section correspondente ao index
+                const tabActive = document.querySelector(".tabActive");//se o index é 0 o openTab mostrará o primeiro section
+                if(tabActive !== null)//por meio da classe busca o section que encontra-se visível/ativo e faz com que ele deixe de ser visível
+                    tabActive.className = "";
+
+                const buttonActive = document.querySelector(".buttonActive");
+                if(buttonActive !== null) //faz com que o botão que está ativo deixe de ser ativo
+                    tabActive.className = "";
+
+                document.querySelectorAll(".tabs section")[i].className = "tabActive"; //faz a ativação da nova aba que o usuário clicou//querySelectorAll seleciona todas as sessoes dentro do div e depois seleciona a sessão em particupar por meio do indice, em seguida é indicada a nova classe do elemento por meio do className
+                document.querySelectorAll("nav button")[i].className = "buttonActive";//seleciona todos os botões dentro do nav e depois seleciona o botão indicado pelo indice e indica a nova classe
+            }
+
+        </script>
+    </body>
+
+</html>

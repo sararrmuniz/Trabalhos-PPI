@@ -1,0 +1,48 @@
+main{
+    background-color: white;
+    width: 30%;
+    text-align: left;
+    vertical-align: middle;
+    padding: 20px;
+    margin: auto;
+    border: 2px;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: #888;
+    box-shadow: 0 0 10px #888;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+body{
+    background-image: url("images/teclado.jpg");
+    background-size: cover;
+    width: 100%;
+    margin: 0 auto;
+    color: black;
+}
+
+input{
+    padding: 8px;
+    margin: 10px 0px;
+    border: 0.5px solid #888;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+input:focus{
+    border: 0.5px solid #888;
+    box-shadow: 0 0 10px #888;
+    outline: none;
+}
+
+button {
+    margin: 20px 0px 0px;
+}
+
+span {
+    color: red;
+}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Exemplo JavaScript Modal</title>
+        <style>
+            body {
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                line-height: 1.5rem;
+                background-image: url("images/teclado.jpg");
+                background-size: cover;
+                margin: 0;
+                padding: 30px;
+            }
+
+            .modal {
+                background-color: #0006;
+                display: none;
+                width: 100%;
+                height: 100%;
+
+                position: fixed;
+                top: 0;
+                left: 0;
+
+                overflow: auto;
+                z-index: 1;
+            }
+
+            .modalContent {
+                background-color: #eee;
+                margin: auto;
+                padding: 20px;
+                border: 0.5px solid #aaa;
+                box-shadow: 0 0 5px #333;
+
+                width: 50%;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            .modalContent button{
+                width: 100%;
+                background-color: rgb(179, 213, 235);
+                border-radius: 2px;
+                border: 1px solid rgb(159, 200, 255);
+                padding: 5px;
+                color: #333;
+                cursor: pointer;
+                outline: none;
+            }
+
+            .modalContent button:hover {
+                background-color: rgb(200, 223, 243);
+            }
+        </style>
+    </head>
+
+    <body>
+        <main>
+            <h1>A FACOM</h1>
+            <p>
+                A Faculdade de Computação (FACOM) da Universidade Federam de Uberlândia foi criada em 2000,
+                a partir do extinto Departamento de Informática (DEINF), criado em 1988 no âmbito do CETEC.
+            </p>
+            <p>
+                No início dos anos 2000 foi criado na Faculdade o Programa de Pós-Graduação em ciência da Computação.
+            </p>
+
+            <button type="button" id="btnOpenModal">Abrir Modal</button>
+        </main>
+
+        <div id="modalTeste" class="modal">
+
+            <div class="modalContent">
+                <h2>Olá! Seja bem-vindo!</h2>
+                <button class="buttonClose">Ok</button>
+            </div>
+
+        </div>
+
+        <script>
+            window.onload = function () { /*Criação da função*/
+                const modal = document.querySelector(".modal"); /*cria uma constante de nome modal que retorna o nó correspondente ao primeiro elemento .modal na página(seleciona o objeto correspondente ao div por meio da classe modal)*/
+                const buttonClose = modal.querySelector(".buttonClose");/*seleciona do botão de fechar que encontra-se dentro do conteudo do modal*/
+                buttonClose.addEventListener("click", function () { /*função que faz com que o modal seja fechado com um clique,ou seja, ao clicar no "Ok" o modal será fechado da tela*/
+                    modal.style.display = 'none';
+                });
+
+                const buttonOpenModal = document.getElementById("btnOpenModal"); /*cria uma constante de nome buttonOpenModal e seleciona os elementos que possuem o id btnOpenModal */
+                buttonOpenModal.addEventListener("click", function () { /*cria a função utilizando o buttonOpenModal e faz com que o modal seja exibido na tela com um click*/
+                    modal.style.display = 'block'; /*ou seja, quando a pessoa clicar no botão "Abrir Modal" o modal será exibido na tela*/
+                })
+            }
+        </script>
+    
+    </body>
+
+</html>

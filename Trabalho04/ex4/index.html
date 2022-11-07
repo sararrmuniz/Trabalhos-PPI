@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Exercício 4</title>
+
+        <style>
+
+            body {
+                width: 100%;
+                margin: 0 auto;
+            }
+
+            main {
+                text-align: center;
+                background-color: #ddd;
+                padding: 20px;
+                border: 2px;
+                border-radius: 5px;
+                width: 30%;
+
+
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+            }
+
+            input{
+                padding: 5px;
+                margin: 10px 0 0px;
+                border: 0.5px solid #888;
+                width: 70%;
+                box-sizing: border-box;
+            }
+        
+
+            li {
+                width: 85%;
+                padding: 5px 10px 5px 20px;
+                margin: 3px;
+                background-color: rgb(189, 217, 240);
+                border: 0.5px solid rgb(70,67,212);
+                border-radius: 3px;
+            }
+
+          li>button{
+            font-size: smaller;
+            float: right;
+            color: red;
+            border: none;
+            background-color: rgb(189, 217, 240);
+            cursor: pointer;
+          }
+        </style>
+    </head>
+
+    <body>
+        <main>
+            <div>
+                <lable for="interesse">Interesse:</lable>
+                <input type="text" id="interesse" name="interesse">
+            </div>
+
+            <ol>
+
+            </ol>
+        </main>
+
+        <script>
+           window.onload = function () { //função que faz com que quando apertamos a tecla "Enter" do teclado o novo interesse inserido na área de input seja adicionado a lista
+            const campoInteresse = document.querySelector("#interesse");
+            campoInteresse.addEventListener("keyup", e =>{
+                if(e.key === "Enter")
+                adicionaInteresse();
+            });
+           }
+
+           function adicionaInteresse(){ //função feita para adicionar os interesses desejados à lista
+
+            const campoInteresse = document.querySelector("#interesse"); //constante feita para retornar o nó correspondente ao elemento com id=interesse
+            const listaInteresses = document.querySelector("ol"); //constante feita para retornar o nó correspondente ao primeiro elemento h1 na página
+
+            const novoLi = document.createElement("li"); //cria elemento html li
+            const novoSpan = document.createElement("span"); //cria elemento html span
+            const novoBotao = document.createElement("button"); //cria elemento html button
+
+            novoSpan.textContent = campoInteresse.value; //adiciona novo conteudo do campo, por meio do textContent e do novoSpan
+            novoBotao.textContent = '✖'; //adiciona caractere 'X'
+
+            novoLi.appendChild(novoSpan); //Acrescenta span como filho do li
+            novoLi.appendChild(novoBotao);//Acrescenta o button como filho do li
+            listaInteresses.appendChild(novoLi);
+
+            novoBotao.onclick = function () { //Adiciona uma função ao evento de clicar no botão criado pela constante novoBotao, ou seja, quando clicar no caractere 'X' o elemento da lista será removido
+                listaInteresses.removeChild(novoLi);
+            }
+            campoInteresse.value = '';
+           }
+        </script>
+    
+    </body>
+
+</html>

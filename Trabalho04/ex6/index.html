@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+        <title>Exemplo Inserção de Interesse</title>
+    </head>
+
+    <body>
+        <main>
+    
+            <div class="loginBox">
+                <h3>Cadastro de Usuário</h3>
+    
+                <form name="formCadastro" action="action.php" method="post">
+    
+                    <div>
+                        <label for="usuario">Usuário</label>
+                        <input type="text" id="usuario" name="usuario" autocomplete="off">
+                        <span></span>
+                    </div>
+    
+    
+                    <div>
+                        <label for="senha">Senha</label>
+                        <input type="password" id="senha" name="senha">
+                        <span></span>
+                    </div>
+    
+                    <div>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" autocomplete="off">
+                        <span></span>
+                    </div>
+    
+                    <button>Cadastrar</button>
+    
+                </form>
+            </div>
+        </main>
+    
+        <script>
+    
+            window.onload = function () { //função que chama a função validaForm
+                document.forms.formCadastro.onsubmit = validaForm;
+            }
+    
+            function validaForm(e) { 
+                let form = e.target;
+                let formValido = true; //atribui valor de verdadeiro para a variavel local formValido
+    
+                const spanUsuario = form.usuario.nextElementSibling;//constante spanUsuario seleciona o próximo elemento irmão do usuario
+                const spanSenha = form.senha.nextElementSibling;//constante spanSenha seleciona o próximo elemento irmão do senha
+                const spanEmail = form.email.nextElementSibling;//constante spanEmail seleciona o próximo elemento irmão do email
+    
+                spanUsuario.textContent = "";//inicia spanUsuario com vazio
+                spanSenha.textContent = "";//inicia spanSenha com vazio
+                spanEmail.textContent = "";//inicia spanEmail com vazio
+    
+                if (form.usuario.value === "") { //Se o campo estiver vazio aparece a mensagem de erro: 'O usuário deve ser preenchido'
+                    spanUsuario.textContent = 'O usuário deve ser preenchido';
+                    formValido = false;
+                }
+    
+                if (form.senha.value === "") { //Se o campo estiver vazio aparece a mensagem de erro: 'A senha deve ser preenchida'
+                    spanSenha.textContent = 'A senha deve ser preenchida';
+                    formValido = false;
+                }
+    
+                if (form.email.value === "") { //Se o campo estiver vazio aparece a mensagem de erro: 'O email deve ser preenchido'
+                    spanEmail.textContent = 'O email deve ser preenchido';
+                    formValido = false;
+                }
+                return formValido //retorna o formValido
+            }
+        </script>
+    </body>
+    
+    </html>
