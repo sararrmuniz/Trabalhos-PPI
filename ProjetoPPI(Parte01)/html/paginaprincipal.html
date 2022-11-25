@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+<head>
+    <link rel="stylesheet" href="../css/paginainicial.css">
+    <script src="../js/paginaprincipal.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home MeuAchado.com</title>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo container">
+            <a><img src="../images/logo3.png" alt="logo"></a>
+            <h1>MeuAchado.com</h1>
+       </div>
+    </header>
+    
+    <nav>
+        <ul class="menu">
+            <li><a href="paginaprincipal.html">Home</a></li>
+            <li><a href="cadastro.html">Cadastrar</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+
+    <main>
+
+        <div class="container2">
+
+            <form action="buscaProduto.php" method="get">
+
+                <div class="search-box">
+                    <input type="text" class="search-text" placeholder="Digite sua busca...">
+                    <button class="buttonlupa"><img class="lupa" src="../images/busca.png" alt="" width="30" height="30"></button>
+                </div>
+
+            </form>
+
+            <button type="button" id="btnBuscaAvancada">Busca Avançada</button>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <img src="../images/icones.png" alt="Icones" width="150" height="50">
+    </footer>
+
+    <div id="buscaAvancadaTeste" class="buscaAvancada">
+        <div class="conteudoBusca">
+            <h2>Faça sua busca avançada:</h2>
+            <form action="buscaValores.php" method="get">
+                <div>
+                    <label for="valormin">Valor Mínimo:</label>
+                    <input type="text" id="valormin" name="valormin" placeholder="R$">
+                  
+                    <label for="valormax">Valor Maximo:</label>
+                    <input type="text" id="valormax" name="valormax" placeholder="R$">
+                </div>
+
+                <div>
+                    <label for="categoria">Categoria:</label>
+                    <select name="categoria" id = "categoria">
+                        <option value="Eletronicos">Eletrônicos</option>
+                        <option value="Eletrodomesticos">Eletrodomésticos</option>
+                        <option value="Modas&Acessorios">Modas&Acessórios</option>
+                        <option value="Joalheria">Joalheria</option>
+                        <option value="Leitura">Leitura</option>
+                        <option value="Cinema">Cinema</option>
+                        <option value="Brinquedos">Brinquedos</option>
+                        <option value="Esporte">Esporte</option>
+                        <option value="Games">Games</option>
+                        <option value="Informatica">Informática</option>
+                        <option value="Casa">Casa</option>
+                        <option value="Promocoes">Promoções</option>
+                        <option value="Outros">Outros</option>
+                    </select>
+                </div>
+
+                <fieldset>
+                    <legend>Como deseja realizar sua busca?</legend>
+                        <div>
+                            <input type="radio" id="titulo" name="tipoBusca" value="titulo">
+                            <label for="titulo">Título do produto</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="descricao" name="tipoBusca" value="descricao">
+                            <label for="descricao">Descrição do produto</label>
+                        </div>
+                    </fieldset>
+        
+                <button class="buttonClose">Finalizar</button>
+
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

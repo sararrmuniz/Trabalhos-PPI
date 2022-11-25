@@ -1,0 +1,168 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    margin: auto;
+    background-color: plum;
+
+    overflow-x: hidden;
+}
+
+main{
+    font-family: "Poppins", sans-serif;
+    background-color: white;
+    width: 40vw;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px grey;
+}
+
+header {
+    width: 100vw;
+    background: #23232e;
+    display: flex;
+    justify-content: center;
+}
+
+nav{
+    width: 100vw;
+    text-align: center;
+    background: #23232e;
+    top: 0;
+    position:sticky;
+}
+
+.logo img {
+    width: 110px;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    color: whitesmoke;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.menu {
+   text-align: center;
+   margin: auto;
+}
+
+.menu li {
+    display: inline-block;
+    padding: 10px 25px 20px;
+}
+
+.menu li a{
+    text-decoration: none;
+    font-size: 20px;
+    color: whitesmoke;
+    font-family: Helvetica, Arial, sans-serif;
+
+    display: inline;
+    width: 200px;
+}
+
+.menu li a:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+input{
+    margin:8px 0 15px;
+    padding: 10px;
+    width: 100%;
+    border: 0.5px solid #888;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input:focus{
+    border: 0.5px solid gray;
+    box-shadow: 0px 0px 5px gray;
+    outline: none;
+}
+#botao {
+    background-color: plum;
+    cursor: pointer;
+}
+
+form div{
+    padding: 10px;
+}
+
+.socialMedia img{
+    width: 36px;
+    margin-left: 3rem;
+}
+
+.socialMedia{
+    display: flex;
+    align-content: center;
+}
+
+main a:first-child img{
+    margin-left: 0;
+}
+
+main h1{
+    margin-top: 0;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+.ou{
+    margin-top: 1rem;
+}
+
+main .ou span{
+    color: lightgrey;
+    position: relative; /*tem que ser relativo em relação ao span que é absoluto*/
+}
+
+main .ou span::before , main .ou span::after{
+    position: absolute;
+    content: '';
+    height: 1px;
+    width: 100px;
+    background-color: lightgray;
+    bottom: 50%;
+    right: 50px;
+
+}
+
+main .ou span::after{
+    left: 50px;
+}
+
+footer {
+    background-color: #23232e;
+    text-align: center;
+    margin: auto;
+    padding: 5px;
+    width: 100%;
+}
+
+@media all AND (max-width: 600px) {
+    body {
+        margin: 0 auto;
+    }
+   main {
+    width: 80%;
+   }
+}

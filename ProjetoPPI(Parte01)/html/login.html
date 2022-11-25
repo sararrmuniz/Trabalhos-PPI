@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Entrar no MeuAchado.com</title>
+    <link rel="stylesheet" href="../css/stylelogin.css">
+    <script src="../js/login.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+
+    <header>
+        <div class="logo container">
+            <a><img src="../images/logo3.png" alt="logo"></a>
+            <h1>MeuAchado.com</h1>
+       </div>
+    </header>
+    
+    <nav>
+        <ul class="menu">
+            <li><a href="paginaprincipal.html">Home</a></li>
+            <li><a href="cadastro.html">Cadastrar</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h1>Acesse a sua conta</h1>
+
+        <form name="formLogin" action="login.php" method="post">
+            <div>
+                <label for="email">Email</label>
+                <input type="text" id="email" name="email" autocomplete="off">
+                <span></span>
+            </div>
+
+            <div>
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" name="senha" autocomplete="off">
+                <span></span>
+            </div>
+
+            <input type="submit" value="Entrar" id="botao" class="conteudoBusca">
+        </form>
+    </main>
+
+    <footer>
+        <img src="../images/icones.png" alt="Icones" width="150" height="50">
+    </footer>
+
+</body>
+
+</html>
