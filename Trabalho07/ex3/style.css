@@ -1,0 +1,47 @@
+main{
+    background-color: white;
+    max-width: 300px;
+    text-align: left;
+    vertical-align: middle;
+    padding: 40px;
+    margin: auto;
+    border: 2px;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: #888;
+    box-shadow: 0 0 10px #888;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+body{
+    background-color: #ddd;
+    width: 100%;
+    margin: 0 auto;
+    color: #555;
+}
+
+input,button{
+    padding: 8px;
+    margin: 10px 0 0px;
+    border: 0.5px solid #888;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+input:focus{
+    border: 0.5px solid #888;
+    box-shadow: 0 0 10px #888;
+    outline: none;
+}
+
+p{
+    text-align: center;
+    font-size: 25px;
+    font-family:Arial, Helvetica, sans-serif;
+    margin-top: 0;
+    margin-bottom: 5px;
+}

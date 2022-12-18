@@ -1,6 +1,0 @@
-Integrantes:
-	- Laura Rosado Rodrigues Muniz (Matrícula: 12021BSI216)
-	- Sara Rosado Rodrigues Muniz (Matrícula: 12021BSI215)
-
-Nome do Portal:
-	- MeuAchado.com
