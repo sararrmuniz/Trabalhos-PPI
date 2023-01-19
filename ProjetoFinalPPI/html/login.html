@@ -3,11 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Entrar no MeuAchado.com</title>
+    <title>Login MeuAchado.com</title>
     <link rel="stylesheet" href="../css/stylelogin.css">
     <script src="../js/login.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+   
 </head>
 
 <body>
@@ -21,7 +21,7 @@
     
     <nav>
         <ul class="menu">
-            <li><a href="paginaprincipal2.html">Home</a></li>
+            <li><a href="paginaprincipal.html">Home</a></li>
             <li><a href="cadastro.html">Cadastrar</a></li>
             <li><a href="login.html">Login</a></li>
         </ul>
@@ -29,12 +29,13 @@
 
     <main>
         
-        <h1>Acesse a sua conta</h1>
+       <div class="container2">
+        <h2>Acesse sua conta</h2>
 
-        <form name="formLogin" action="login.php" method="post">
+        <form name="formLogin" action="../php/login.php" method="post">
             <div>
                 <label for="email">Email</label>
-                <input type="text" id="email" name="email" autocomplete="off">
+                <input type="text" id="email" name="email" autocomplete="on">
                 <span></span>
             </div>
 
@@ -46,13 +47,14 @@
 
             <input type="submit" value="Entrar" id="botao" class="conteudoBusca">
         </form>
+       </div>
+
     </main>
 
     <footer>
         <img src="../images/icones.png" alt="Icones" width="150" height="50">
     </footer>
     
-
 </body>
 
 </html>

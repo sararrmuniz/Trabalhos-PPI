@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Rolagem Infinita</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      background-color: #dedede;
+      font-family: Helvetica;
+      width: 60%;
+      margin: 0 auto;
+      margin-top: 3rem;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      color: #888;
+    }
+
+    .item {
+      background-color: white;
+      padding: 1rem;
+      margin: 1rem 0;
+    }
+
+    .item-image {
+      width: 150px;
+      height: 150px;
+      margin: 0 2rem;
+    }
+
+    .item-name {
+      font: 2em Verdana;
+      color: #888;
+    }
+
+    .item-price {
+      font: 2em Verdana;
+      color: darkgreen;
+      margin-left: 2rem;
+    }
+
+    .item-price::before {
+      content: 'R$ ';
+    }
+  </style>
+</head>
+
+<body>
+
+  <section id="products">
+    <h2>Nossos produtos</h2>
+
+    <template id="template"> <!--encapsula um conteúdo do cliente que não está renderizando quando a página é carregada.Pode ser instanciado 
+      em tempo de execução com JavaScrip-->
+      <div class="item">
+        <img class="item-image" src="images/{{prod-image}}"></img> <!--imagem-->
+        <span class="item-name">{{prod-name}}</span> <!--span para o nome do produto-->
+        <span class="item-price">{{prod-price}}</span> <!--span para o preço do produto-->
+      </div>
+    </template>
+
+  </section>
+
+  <script>
+
+    function renderProducts(newProducts) {
+
+      const prodsSection = document.getElementById("products"); //pega o elemento pelo id = products
+      const template = document.getElementById("template"); //pega o elemento pelo id = template
+
+      for (let product of newProducts) {
+        let html = template.innerHTML //retorna as informações do elemento e de seus descendentes
+          .replace("{{prod-image}}", product.imagePath) //responsável por substituir uma imagem por outra
+          .replace("{{prod-name}}", product.name) //responsável por substituir o nome por outro
+          .replace("{{prod-price}}", product.price); //responsável por substituir o preço por outro
+
+        prodsSection.insertAdjacentHTML("beforeend", html); 
+        //pega o elemento que foi selecionado e insere os nós na árvore DOM
+       //insere as informações do html dentro do elemento após seu último filho
+      };
+    }
+
+    //cria função assíncrona
+    async function loadProducts() { 
+
+      try {
+        let response = await fetch("more-products.php"); 
+        //executa a função para esperar o retorna da promise.
+       //enquanto a requisição não obter resposta, nenhum código será executado.
+        if (!response.ok) throw new Error(response.statusText); 
+        //retorna um erro caso ocorra um.
+        var products = await response.json();
+        //converte a resposta em um json
+       //o await é responsável por fazer com que a promise espere ser resolvida para depois atribuir
+      // o valor da promise para a variável products.
+      }
+      catch (e) { //mostra a exceção.
+        console.error(e);
+        return;
+      }
+
+      renderProducts(products);
+    }
+
+    window.onload = function () { //chama a função loadProducts()
+      loadProducts();
+    }
+
+    window.onscroll = function () {
+      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {//responsavel pelo scroll infinito na vertical
+        loadProducts();
+      }
+    };
+
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro MeuAchado.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/stylecadastro.css">
+    <script src="../js/validaCadastro.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo container">
+            <a><img src="../images/logo3.png" alt="logo"></a>
+            <h1>MeuAchado.com</h1>
+        </div>
+    </header>
+
+    <nav>
+        <ul class="menu">
+            <li><a href="paginaprincipal.html">Home</a></li>
+            <li><a href="cadastro.html">Cadastrar</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="container2">
+            <h2>Crie sua conta</h2>
+
+            <div class="socialMedia">
+                <a href="#">
+                    <img src="../images/google.png" alt="Google">
+                </a>
+                <a href="#">
+                    <img src="../images/facebook.png" alt="Facebook">
+                </a>
+            </div>
+
+            <div class="ou">
+                <span>ou</span>
+            </div>
+
+            <form name="formCadastro" action="../php/action.php" method="post">
+                <div>
+                    <label for="nome">Nome</label>
+                    <input name="nome" type="text" id="nome">
+                    <span id="colorspan"></span>
+                </div>
+
+                <div>
+                    <label for="cpf">CPF</label>
+                    <input name="cpf" type="cpf" id="cpf">
+                    <span id="colorspan"></span>
+                </div>
+
+                <div>
+                    <label for="email">Email</label>
+                    <input name="email" type="email" id="email">
+                    <span id="colorspan"></span>
+                </div>
+
+                <div>
+                    <label for="telefone">Telefone</label>
+                    <input name="telefone" type="telefone" id="telefone">
+                    <span id="colorspan"></span>
+                </div>
+
+                <div>
+                    <label for="senha">Senha</label>
+                    <input name="senha" type="password" id="senha">
+                    <span id="colorspan"></span>
+                </div>
+
+                <input type="submit" value="Cadastrar" id="botao">
+
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <img src="../images/icones.png" alt="Icones" width="150" height="50">
+    </footer>
+
+</body>
+
+</html>

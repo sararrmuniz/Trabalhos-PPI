@@ -8,3 +8,5 @@ CREATE TABLE endereco
    cidade varchar(50),
 ) ENGINE=InnoDB;
 
+INSERT INTO endereco VALUES(default,'38400-100','Av Floriano','Centro','Uberlândia');
+INSERT INTO endereco VALUES(default,'38400-101','Machado de Assis','Centro','Uberlândia');

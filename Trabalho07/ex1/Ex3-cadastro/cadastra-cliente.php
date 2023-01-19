@@ -42,3 +42,4 @@ catch (Exception $e) {
   else
     exit('Falha ao cadastrar os dados: ' . $e->getMessage());
 }
+?>

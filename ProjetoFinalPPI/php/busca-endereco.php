@@ -5,13 +5,13 @@ $pdo = mysqlConnect();
 
 class Endereco
 {
-  public $rua;
+  public $estado;
   public $bairro;
   public $cidade;
 
-  function __construct($rua, $bairro, $cidade)
+  function __construct($estado, $bairro, $cidade)
   {
-    $this->rua = $rua;
+    $this->estado = $estado;
     $this->bairro = $bairro; 
     $this->cidade = $cidade;
   }
@@ -23,7 +23,7 @@ try {
 
   $sql = <<<SQL
   -- Repare que a coluna Id foi omitida por ser auto_increment
-  SELECT * FROM endereco
+  SELECT * FROM base_enderecos
   WHERE cep = ?
   SQL;
 
@@ -31,14 +31,14 @@ try {
     $stmt->execute([$cep]);
     $row = $stmt->fetch();
 
-    $rua = $row["rua"];
+    $estado = $row["estado"];
     $bairro = $row["bairro"];
     $cidade = $row["cidade"];
     
-    if ($rua == null)
+    if ($estado == null)
     $endereco = new Endereco('', '', '');
     else
-    $endereco = new Endereco($rua,$bairro,$cidade);
+    $endereco = new Endereco($estado,$bairro,$cidade);
   
   } 
   catch (Exception $e) {
