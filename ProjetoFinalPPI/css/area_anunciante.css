@@ -106,7 +106,6 @@
     }
 
     .opcoes:link,
-    .opcoe:visited,
     .opcoe:active {
         text-align: center;
         color: #555;

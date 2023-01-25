@@ -1,9 +1,10 @@
 <?php
 session_start();
 
+$email = $_SESSION['email'];
+
 require "conexaoMysql.php";
 $pdo = mysqlConnect();
-
 
 if (!isset($_SESSION['email']))
     header("location: ../html/login.html");
@@ -13,21 +14,39 @@ if (isset($_GET['sair'])) {
     unset($_SESSION['email']);
     header("location: ../html/login.html");
 }
+
+try {
+
+  $sql = <<<SQL
+  SELECT anuncio.codigo,anuncio.titulo,categoria.nome,anuncio.preco,anuncio.dataHora,anuncio.descricao,foto.nomeArqFoto
+  FROM anuncio,anunciante,foto,categoria
+  WHERE anunciante.email = '$email'
+  AND anunciante.codigo = codAnunciante
+  AND anuncio.codigo = codAnuncio
+  AND categoria.codigo = codCategoria
+  SQL;
+
+  $stmt = $pdo->query($sql);
+} 
+catch (Exception $e) {
+  //error_log($e->getMessage(), 3, 'log.php');
+  exit('Ocorreu uma falha: ' . $e->getMessage());
+}
 ?>
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Criar Anúncio</title>
+  <meta charset="utf-8">
+  <!-- 1: Tag de responsividade -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Meus Anúncios</title>
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <!-- 2: Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
-    <style>
+  <style>
         * {
             margin: 0;
             padding: 0;
@@ -41,25 +60,32 @@ if (isset($_GET['sair'])) {
             overflow-x: hidden;
         }
 
-        .container {
-            margin-top: 60px;
-            margin-bottom: 60px;
+        h3 {
+            text-align: center;
         }
 
+        .container {
+            background-color: white;
+            padding: 20px;
+            border: 1px solid lightgray;
+            border-radius: 10px;
+            box-shadow: 5px 5px 5px grey;
+        }
+
+        main {
+        font-family: Helvetica, Arial, sans-serif;
+        width: 100vw;
+        height: 85vh;
+        margin: 0 auto;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+
+        
         button {
             margin-top: 1rem;
-        }
-
-        fieldset {
-            padding: 1rem;
-            border: 0.5 solid gray;
-            background-color: #eee;
-        }
-
-        legend {
-            background-color: #23232e;
-            color: #fff;
-            padding: 3px 8px;
         }
 
         header {
@@ -295,10 +321,6 @@ if (isset($_GET['sair'])) {
             .open {
                 display: block;
             }
-            .container {
-            margin-top: 300px;
-            margin-bottom: 300px;
-        }
         }
 
         /*Responsividade para Galaxy Fold*/
@@ -322,11 +344,10 @@ if (isset($_GET['sair'])) {
             }
         }
     </style>
-
 </head>
 
 <body>
-    <header>
+<header>
         <nav class="nav-bar">
             <div class="logo">
                 <a><img src="../images/logo3.png" alt="logo"></a>
@@ -366,94 +387,67 @@ if (isset($_GET['sair'])) {
         </div>
     </header>
 
+    <main>
     <div class="container">
+        <h3>Meus Anúncios</h3>
+        <table class="table table-striped table-hover">
+      <tr>
+        <th></th>
+        <th>Título</th>
+        <th>Categoria</th>
+        <th>Data da Publicação</th>
+        <th>Preço</th>
+        <th>Descrição</th>
+        <th>Foto</th>
+      </tr>
 
-        <main>
-            <form action="formAnuncio.php" method="POST" enctype="multipart/form-data">
+      <?php
+      while ($row = $stmt->fetch()) {
 
-                <fieldset>
-                    <legend>Dados do Anúncio</legend>
+        $codigo = $row['codigo'];
+        $titulo = htmlspecialchars($row['titulo']);
+        $categoria = htmlspecialchars($row['nome']);
+        $dataHora = htmlspecialchars($row['dataHora']);
+        $preco = htmlspecialchars($row['preco']);
+        $descricao = htmlspecialchars($row['descricao']);
+        $nomeArqFoto = htmlspecialchars($row['nomeArqFoto']);
 
-                    <div class="row g-3">
-                        <!-- titulo e descricao -->
-                        <div class="col-sm-4">
-                            <label for="titulo" class="form-label">Título</label>
-                            <input type="text" name="titulo" class="form-control" id="titulo" required>
-                        </div>
+        echo <<<HTML
+          <tr>
+          <td>
+              <a href="exclui_anuncio.php?codigo=$codigo">
+                <img src="../images/delete.png" width="15" height="15">
+              </a>
+            </td> 
+            <td>$titulo</td>
+            <td>$categoria</td>
+            <td>$dataHora</td> 
+            <td>$preco</td>
+            <td>$descricao</td>
+            <td>$nomeArqFoto</td>
+          </tr>      
+        HTML;
+      }
+      ?>
 
-                        <div class="col-sm-4">
-                            <label class="form-label">Categoria</label>
-                            <select name="categoria" class="form-select" id="categoria" required>
-                                <option value="" selected>Selecione</option>
-                                <?php
-                                $select = $pdo->prepare("SELECT nome, codigo FROM categoria ORDER BY nome ASC");
-                                $select->execute();
-                                $fetchAll = $select->fetchAll();
-                                foreach ($fetchAll as $categorias) {
-                                    echo '<option value="' . $categorias['codigo'] . '">' . $categorias['nome'] . '</option>';
-                                }
-                                ?>
-                            </select>
-                        </div>
-
-                        <div class="col-sm-4">
-                            <label for="preco" class="form-label">Preço</label>
-                            <input type="number" name="preco" class="form-control" id="preco" min="0" placeholder="R$" required>
-                        </div>
-
-                        <div class="col-sm-3">
-                            <label for="data" class="form-label">Data</label>
-                            <input type="datetime-local" name="data" class="form-control" id="data" required>
-                        </div>
-                        <div class="col-sm-3">
-                            <label for="foto" class="form-label">Foto do Produto</label>
-                            <input type="file" accept=".png, .jpg, .jpeg" name="foto[]" multiple class="form-control" id="foto" required>
-                        </div>
-                        <div class="col-sm-6">
-                            <label for="descricao" class="form-label">Descrição</label>
-                            <textarea name="descricao" rows="" cols="" class="form-control" required></textarea>
-                        </div>
-                    </div>
-                    <fieldset>
-                        <legend>Dados de Endereço</legend>
-
-                        <div class="row g-3">
-                            <!-- CEP e endereço -->
-                            <div class="col-sm-6">
-                                <label for="cep" class="form-label">CEP</label>
-                                <input type="text" name="cep" class="form-control" id="cep" required>
-                            </div>
-                            <div class="col-sm-6">
-                                <label for="estado" class="form-label">Estado</label>
-                                <input type="text" name="estado" class="form-control" id="estado" required>
-                            </div>
-
-                            <!-- Bairro e cidade -->
-                            <div class="col-sm-6">
-                                <label for="bairro" class="form-label">Bairro</label>
-                                <input type="text" name="bairro" class="form-control" id="bairro" required>
-                            </div>
-                            <div class="col-sm-6">
-                                <label for="cidade" class="form-label">Cidade</label>
-                                <input type="text" name="cidade" class="form-control" id="cidade" required>
-                            </div>
-                        </div>
-                    </fieldset>
-
-                    <div class="col-12">
-                        <button type="submit" class="btn btn-secondary">Publicar</button>
-                    </div>
-            </form>
+    </table>
+  </div>
         </main>
-    </div>
-    <footer>
+
+   <footer>
         <img src="../images/icones.png" alt="Icones" width="150" height="50">
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-        crossorigin="anonymous"></script>
 
-    <script src="../js/custom.js"></script>
+  <script>
+    function mostraMenu() {
+    let menuMobile = document.querySelector('.mobile-menu');
+    if (menuMobile.classList.contains('open')) {
+        menuMobile.classList.remove('open');
+    } else {
+        menuMobile.classList.add('open');
+    }
+}
+  </script>
 
 </body>
 

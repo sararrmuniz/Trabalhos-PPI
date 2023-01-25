@@ -5,7 +5,11 @@ session_start();
 require "conexaoMysql.php";
 $pdo = mysqlConnect();
 
-// Resgata os dados do anunciante
+  //$foto = $_FILES["foto"];
+
+  //verifica se a foto foi enviada
+  if(isset($_POST['titulo'])){
+  // Resgata os dados do anunciante
   $titulo = $_POST["titulo"] ?? "";
   $categoria = $_POST["categoria"] ?? "";
   $descricao = $_POST["descricao"] ?? "";
@@ -15,24 +19,23 @@ $pdo = mysqlConnect();
   $estado = $_POST["estado"] ?? "";
   $bairro = $_POST["bairro"] ?? "";
   $cidade = $_POST["cidade"] ?? "";
-  $foto = $_FILES["foto"];
+  $email = $_SESSION['email'];
+  $fotos = array();
 
-  //verifica se a foto foi enviada
-  if($foto != NULL){
-      //salva dentro da pasta images
-      $nomeArqFoto = $_FILES['foto']['name'].'jpg';
-      move_uploaded_file($_FILES['foto']['tmp_name'], 'images/'.$nomeArqFoto);
-  }else {
+  if(isset($_FILES['foto'])){
+    for($i=0; $i < count($_FILES['foto']['name']);$i++){
+
+      $nomeArqFoto = $_FILES['foto']['name'][$i];
+      move_uploaded_file($_FILES['foto']['tmp_name'][$i], '../images/' . $nomeArqFoto);
+
+      //salvando nomes para enviar para o banco
+      array_push($fotos, $nomeArqFoto);
+    }
+  }
+}else {
     echo"Você não realizou o upload de forma satisfatória.";
   }
 
-$email = $_SESSION['email'];
-
-/*$sql = <<<SQL
-  SELECT codigo
-  FROM categoria WHERE codigo = '$categoria'
-  SQL;
-*/
 
 $sql1 = <<<SQL
   INSERT INTO anuncio (titulo, descricao, preco, dataHora, 
@@ -55,10 +58,6 @@ $sql2 = <<<SQL
 try {
   $pdo->beginTransaction();
 
-  //$sql = $pdo->query($sql);
-  //$row = $sql->fetch();
-  //$codCategoria = $row['codigo'];
-
   $sql3 = $pdo->query($sql3);
   $row = $sql3->fetch();
   $codAnunciante= $row['codigo'];
@@ -66,7 +65,7 @@ try {
   $stmt1 = $pdo->prepare($sql1);
   if (!$stmt1->execute([
     $titulo, $descricao, $preco, $dataHora,
-    $cep, $estado, $bairro, $cidade, $categoria, $codAnunciante//*
+    $cep, $estado, $bairro, $cidade, $categoria, $codAnunciante
   ])) throw new Exception('Falha na primeira inserção');
 
   $codAnuncio = $pdo->lastInsertId();

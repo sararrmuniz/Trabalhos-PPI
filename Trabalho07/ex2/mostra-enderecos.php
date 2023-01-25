@@ -72,7 +72,7 @@ catch (Exception $e) {
 
         echo <<<HTML
           <tr>
-          <td>
+            <td>
               <a href="exclui-endereco.php?id=$id">
                 <img src="delete.png">
               </a>
